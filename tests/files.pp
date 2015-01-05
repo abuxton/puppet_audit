@@ -14,6 +14,9 @@ include puppet_audit
 #notify {"${puppet_audit::params::fileMD5}":}
 puppet_audit::files { "${puppet_audit::params::filepath}":
 fileMD5 => "${puppet_audit::params::fileMD5}",
-tags  => "${puppet_audit::params::tags}",
+group   => "${puppet_audit::params::group}",
+owner   => "${puppet_audit::params::owner}",
+mode    => "${puppet_audit::params::mode}",
+tags    => "${puppet_audit::params::tags}",
 }
 

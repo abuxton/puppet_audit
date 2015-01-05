@@ -3,6 +3,9 @@
 define puppet_audit::files(
   $filepath = "${title}",
   $fileMD5,
+  $group,
+  $mode,
+  $owner,
   $tags = '',
   )
   {
@@ -10,19 +13,25 @@ define puppet_audit::files(
     '': {
       
       file { "${filepath}" :
-        ensure => file,
+        ensure  => file,
         content => "${fileMD5}",
-        noop => true,
+        group   => "${group}",
+        mode    => "${mode}",
+        owner   => "${owner}",
+        noop    => true,
         replace => true,
       } 
     }
     default:  {
       file { "${filepath}" :
-        ensure => file,
+        ensure  => file,
         content => "${fileMD5}",
-        noop => true,
+        group   => "${group}",
+        mode    => "${mode}",
+        owner   => "${owner}",
+        noop    => true,
         replace => true,
-        tag => "${tags}",
+        tag     => "${tags}",
       }
     }
   }

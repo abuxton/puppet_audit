@@ -1,28 +1,34 @@
-# == Class puppet_audit::directory
+# == Class puppet_audit::files
 #
-define puppet_audit::directory(
-  $dirpath = "${title}",
-  $dirMD5,
+define puppet_audit::files(
+  $filepath = "${title}",
+  $group,
+  $mode,
+  $owner,
   $tags = '',
   )
   {
     case $tags{
     '': {
       
-      dir { "${dirpath}" :
-        ensure => dir,
-        content => "${dirMD5}",
-        noop => true,
+      file { "${filepath}" :
+        ensure  => directory,
+        group   => "${group}",
+        mode    => "${mode}",
+        owner   => "${owner}",
+        noop    => true,
         replace => true,
       } 
     }
     default:  {
-      dir { "${dirpath}" :
-        ensure => dir,
-        content => "${dirMD5}",
-        noop => true,
+      file { "${filepath}" :
+        ensure  => directory,
+        group   => "${group}",
+        mode    => "${mode}",
+        owner   => "${owner}",
+        noop    => true,
         replace => true,
-        tag => "${tags}",
+        tag     => "${tags}",
       }
     }
   }
