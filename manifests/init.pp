@@ -14,8 +14,8 @@ class puppet_audit (
 
   # validate parameters here
 
-  class { 'puppet_audit::install': } ->
   class { 'puppet_audit::config': } ~>
-  class { 'puppet_audit::service': } ->
+  class { 'puppet_audit::directory': } ->
+  class { 'puppet_audit::files'}->
   Class['puppet_audit']
 }
