@@ -3,7 +3,7 @@
 define puppet_audit::directory(
   $dirpath = "${title}"
   $dirMD5v
-  $tags => "${tags}"
+  $tags => ""
   )
   {
     file { "${dirpath}" :
