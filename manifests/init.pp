@@ -8,8 +8,6 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class puppet_audit (
-  $package_name = $puppet_audit::params::package_name,
-  $service_name = $puppet_audit::params::service_name,
 ) inherits puppet_audit::params {
 
   # validate parameters here

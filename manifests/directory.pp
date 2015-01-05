@@ -13,7 +13,7 @@ define puppet_audit::directory(
         ensure => dir,
         content => "${dirMD5}",
         noop => true,
-        replace => false,
+        replace => true,
       } 
     }
     default:  {
@@ -21,7 +21,7 @@ define puppet_audit::directory(
         ensure => dir,
         content => "${dirMD5}",
         noop => true,
-        replace => false,
+        replace => true,
         tag => "${tags}",
       }
     }

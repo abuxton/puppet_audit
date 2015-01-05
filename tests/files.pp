@@ -10,6 +10,8 @@
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
 include puppet_audit
+#notify {"${puppet_audit::params::filepath}":}
+#notify {"${puppet_audit::params::fileMD5}":}
 puppet_audit::files { "${puppet_audit::params::filepath}":
 fileMD5 => "${puppet_audit::params::fileMD5}",
 tags  => "${puppet_audit::params::tags}",
