@@ -11,9 +11,7 @@
 #
 include puppet_audit
 puppet_audit::files { "${puppet_audit::params::filepath}":
-fileMD5 => "${puppet_audit::params::fileMD5}"
-$tags  => "${puppet_audit::params::tags}"
-
-  
+fileMD5 => "${puppet_audit::params::fileMD5}",
+tags  => "${puppet_audit::params::tags}",
 }
 

@@ -15,7 +15,7 @@ class puppet_audit::params {
 #└── afile.txt
   $fileMD5  = '{md5}d41d8cd98f00b204e9800998ecf8427e' 
   $dirMD5   = undef
-  $tags     = undef
+  $tags     = ""
   }
   default: {
   $filepath = undef
