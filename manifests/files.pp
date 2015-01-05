@@ -11,7 +11,7 @@ define puppet_audit::files(
       content => "${fileMD5}",
       noop => true,
       replace => false,
-      tags => "${tags}",
+      tag => "${tags}",
     }
     
     

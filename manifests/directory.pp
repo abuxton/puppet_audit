@@ -11,7 +11,7 @@ define puppet_audit::directory(
       content => "${dirMD5}",
       noop => true,
       replace => false,
-      tags => ${tags},
+      tag => ${tags},
     }
     
     
