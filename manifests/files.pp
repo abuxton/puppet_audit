@@ -3,6 +3,7 @@
 define puppet_audit::files(
   $filepath = "${title}"
   $fileMD5v
+  $tags = "${tags}"
   )
   {
     file { "${filepath}" :
@@ -10,6 +11,7 @@ define puppet_audit::files(
       content => "${fileMD5}",
       noop => true,
       replace => false,
+      tags => "${tags}",
     }
     
     

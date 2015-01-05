@@ -4,17 +4,11 @@
 # It sets variables according to platform
 #
 class puppet_audit::params {
-  case $::osfamily {
-    'Debian': {
-      $package_name = 'puppet_audit'
-      $service_name = 'puppet_audit'
-    }
-    'RedHat', 'Amazon': {
-      $package_name = 'puppet_audit'
-      $service_name = 'puppet_audit'
-    }
-    default: {
-      fail("${::operatingsystem} not supported")
-    }
-  }
+  $filepath = undef
+  $dirpath  = undef
+  $fileMD5  = undef
+  $dirMD5   = undef
+  $tags     = undef
+  
 }
+
