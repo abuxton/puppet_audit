@@ -11,7 +11,9 @@
 #
 include puppet_audit
 puppet_audit::directory { "${puppet_audit::params::dirpath}":
-dirMD5 => "${puppet_audit::params::dirMD5}",
-tags  => "${puppet_audit::params::tags}",
+group   => "${puppet_audit::params::group}",
+owner   => "${puppet_audit::params::owner}",
+mode    => "${puppet_audit::params::mode}",
+tags    => "${puppet_audit::params::tags}",
 }
 
