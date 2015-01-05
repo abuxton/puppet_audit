@@ -1,19 +1,30 @@
-# == Class puppet_audit::files
+# == Class puppet_audit::directory
 #
 define puppet_audit::directory(
-  $dirpath = "${title}"
-  $dirMD5v
-  $tags => ""
+  $dirpath = "${title}",
+  $dirMD5,
+  $tags = '',
   )
   {
-    file { "${dirpath}" :
-      ensure => file,
-      content => "${dirMD5}",
-      noop => true,
-      replace => false,
-      tag => ${tags},
+    case $tags{
+    '': {
+      
+      dir { "${dirpath}" :
+        ensure => dir,
+        content => "${dirMD5}",
+        noop => true,
+        replace => false,
+      } 
     }
-    
-    
+    default:  {
+      dir { "${dirpath}" :
+        ensure => dir,
+        content => "${dirMD5}",
+        noop => true,
+        replace => false,
+        tag => "${tags}",
+      }
+    }
   }
 }
+
