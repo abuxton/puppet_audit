@@ -1,9 +1,9 @@
 # == Class puppet_audit::files
 #
 define puppet_audit::files(
-  $filepath = "${title}"
-  $fileMD5v
-  $tags = ""
+  $filepath = "${title}",
+  $fileMD5,
+  $tags = "",
   )
   {
     file { "${filepath}" :
@@ -16,4 +16,4 @@ define puppet_audit::files(
     
     
   }
-}
+
