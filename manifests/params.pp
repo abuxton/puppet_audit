@@ -22,6 +22,7 @@ class puppet_audit::params {
       $group    = '0'
       $mode     = '644'
       $owner    = '501'
+      $target   = '/private/tmp'
       $tags     = ""
     
     }
@@ -31,6 +32,7 @@ class puppet_audit::params {
       $group    = undef
       $mode     = undef
       $owner    = undef
+      $target   = undef
       $tags     = undef
     }
   } 
