@@ -1,17 +1,17 @@
 # == Class puppet_audit::link
 #
 define puppet_audit::link(
-  $linkfilepath = "${title}",
   $group,
   $mode,
   $owner,
   $target,
   $tags = '',
+  $linkfilepath = "${title}",  
   )
   {
     case $tags{
     '': {
-      
+
       file { "${linkfilepath}" :
         ensure  => link,
         group   => "${group}",
@@ -20,7 +20,7 @@ define puppet_audit::link(
         target  => "${target}",
         noop    => true,
         replace => true,
-      } 
+      }
     }
     default:  {
       file { "${linkfilepath}" :
