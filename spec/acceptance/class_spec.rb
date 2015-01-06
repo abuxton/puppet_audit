@@ -14,13 +14,5 @@ describe 'puppet_audit class' do
       expect(apply_manifest(pp).exit_code).to eq(0)
     end
 
-    describe package('puppet_audit') do
-      it { should be_installed }
-    end
-
-    describe service('puppet_audit') do
-      it { should be_enabled }
-      it { should be_running }
-    end
-  end
+ end
 end

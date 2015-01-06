@@ -2,22 +2,19 @@ require 'spec_helper'
 
 describe 'puppet_audit' do
   context 'supported operating systems' do
-    ['Debian', 'RedHat'].each do |osfamily|
-      describe "puppet_audit class without any parameters on #{osfamily}" do
+    ['Darwin', 'Redhat'].each do |operatingsystem|
+      describe "puppet_audit class without any parameters on #{operatingsystem}" do
         let(:params) {{ }}
         let(:facts) {{
-          :osfamily => osfamily,
+          :operatingsystem => operatingsystem,
         }}
 
         it { should compile.with_all_deps }
 
         it { should contain_class('puppet_audit::params') }
-        it { should contain_class('puppet_audit::install').that_comes_before('puppet_audit::config') }
-        it { should contain_class('puppet_audit::config') }
-        it { should contain_class('puppet_audit::service').that_subscribes_to('puppet_audit::config') }
-
-        it { should contain_service('puppet_audit') }
-        it { should contain_package('puppet_audit').with_ensure('present') }
+        it { should contain_class('puppet_audit::files') }
+        it { should contain_class('puppet_audit::directory') }
+        
       end
     end
   end
