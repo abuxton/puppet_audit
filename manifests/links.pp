@@ -1,6 +1,6 @@
-# == Class puppet_audit::directory
+# == Class puppet_audit::link
 #
-define puppet_audit::directory(
+define puppet_audit::link(
   $linkfilepath = "${title}",
   $group,
   $mode,
