@@ -13,7 +13,7 @@
 
 ##Overview
 
-Developed for Aramco, the puppet_audit module packages 3 defined resource types to check the presence / integrity of sensitive files, directories and symbolic links.
+The puppet_audit module packages 3 defined resource types to check the presence / integrity of sensitive files, directories and symbolic links.
 
 ##Module Description
 
