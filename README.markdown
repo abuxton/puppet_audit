@@ -31,7 +31,7 @@ trigger a report entry describing the difference, but because each resource has 
 metaparameter set to `true`, will *not* change the state of the filesystem.
 
 This is useful if, for example, you work in an environment where a security team is interested in using Puppet for Tripwire / Samhain / Nessus style functionality but does not want to actively manage the files in question, and simply be alerted using Puppet's reporting mechanism if there has been drift.
-=======
+
 The puppet_audit module packages 3 defined resource types to check the presence / integrity of sensitive files, directories and symbolic links.
 
 
