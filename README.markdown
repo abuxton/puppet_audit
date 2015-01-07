@@ -39,8 +39,7 @@ The puppet_audit module packages 3 defined resource types to check the presence 
 ##Module Description
 
 A standalone module which consumes hiera hash data pertinent to files, directories and symbolic links in the following example form:
-  @@@ bash
-
+<code>
   ---
   'profiles::puppet_audit_files':
     '/etc/passwd':
@@ -68,7 +67,7 @@ A standalone module which consumes hiera hash data pertinent to files, directori
       owner: '0'
       mode: '777'
       target: '../boot/grub/grub.conf'
-
+</code>
 
 ##Setup
 
