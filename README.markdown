@@ -39,34 +39,36 @@ The puppet_audit module packages 3 defined resource types to check the presence 
 ##Module Description
 
 A standalone module which consumes hiera hash data pertinent to files, directories and symbolic links in the following example form:
+  @@@ bash
 
----
-'profiles::puppet_audit_files':
-  '/etc/passwd':
-    fileMD5: '{md5}0c4305ed79b2292299b00ebcb691a0e4'
-    group: '0'
-    mode: '644'
-    owner: '0'
-  '/etc/group':
-    fileMD5: '{md5}51c9981096429f8e37696806c7b0050f'
-    group: '0'
-    mode: '644'
-    owner: '0'
-'profiles::puppet_audit_directories':
-  '/etc/rc.d':
-    group: '0'
-    owner: '0'
-    mode: '755'
-  '/etc/xinetd.d':
-    group: '0'
-    owner: '0'
-    mode: '755'
-'profiles::puppet_audit_links':
-  '/etc/grub.conf':
-    group: '0'
-    owner: '0'
-    mode: '777'
-    target: '../boot/grub/grub.conf'
+  ---
+  'profiles::puppet_audit_files':
+    '/etc/passwd':
+      fileMD5: '{md5}0c4305ed79b2292299b00ebcb691a0e4'
+      group: '0'
+      mode: '644'
+      owner: '0'
+    '/etc/group':
+      fileMD5: '{md5}51c9981096429f8e37696806c7b0050f'
+      group: '0'
+      mode: '644'
+      owner: '0'
+  'profiles::puppet_audit_directories':
+    '/etc/rc.d':
+      group: '0'
+      owner: '0'
+      mode: '755'
+    '/etc/xinetd.d':
+      group: '0'
+      owner: '0'
+      mode: '755'
+  'profiles::puppet_audit_links':
+    '/etc/grub.conf':
+      group: '0'
+      owner: '0'
+      mode: '777'
+      target: '../boot/grub/grub.conf'
+
 
 ##Setup
 
