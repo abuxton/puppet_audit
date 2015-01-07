@@ -72,7 +72,7 @@ A standalone module which consumes hiera hash data pertinent to files, directori
 ##Setup
 
  Install the module from the forge and classify appropriate nodes with the profiles::puppet_audit class.
-
+<pre>
  class profiles::puppet_audit {
    include puppet_audit
 
@@ -87,7 +87,7 @@ A standalone module which consumes hiera hash data pertinent to files, directori
    create_resources('puppet_audit::directory', $security_directories_hash)
    create_resources('puppet_audit::link', $security_links_hash)
   } 
-
+</pre>
 ###What puppet_audit affects
 
 * Each file, symlink, or directory you want to be informed about needs to have its "correct"
