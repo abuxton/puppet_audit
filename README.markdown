@@ -30,15 +30,34 @@ of the type. Differences between the desired state and the actual state on the s
 trigger a report entry describing the difference, but because each resource has the `noop`
 metaparameter set to `true`, will *not* change the state of the filesystem.
 
-This is useful if, for example, you work in an environment where a security team is interested
-in using Puppet for Tripwire / Samhain / Nessus style functionality but does not want to
-actively manage the files in question, and simply be alerted using Puppet's reporting mechanism if there has been drift.
+This is useful if, for example, you work in an environment where a security team is interested in using Puppet for Tripwire / Samhain / Nessus style functionality but does not want to actively manage the files in question, and simply be alerted using Puppet's reporting mechanism if there has been drift.
 =======
 The puppet_audit module packages 3 defined resource types to check the presence / integrity of sensitive files, directories and symbolic links.
 
-##Module Description
 
 A standalone module which consumes hiera hash data pertinent to files, directories and symbolic links in the following example form:
+
+##Setup
+
+ Install the module from the forge and classify appropriate nodes with a profile class i.e.
+<pre>
+ class profiles::puppet_audit {
+   include puppet_audit
+
+  # Setup local hash variables pulling data from Hiera hashes.
+   $security_files_hash = hiera_hash('profiles::puppet_audit_files',{})
+   $security_directories_hash = hiera_hash('profiles::puppet_audit_directories',{})
+   $security_links_hash = hiera_hash('profiles::puppet_audit_links',{})
+  
+  # Check files, directories, and links using create resources function.
+  
+   create_resources('puppet_audit::file', $security_files_hash)
+   create_resources('puppet_audit::directory', $security_directories_hash)
+   create_resources('puppet_audit::link', $security_links_hash)
+  } 
+</pre>
+
+Hiera data for example usage:
 <pre>
   ---
   'profiles::puppet_audit_files':
@@ -69,25 +88,7 @@ A standalone module which consumes hiera hash data pertinent to files, directori
       target: '../boot/grub/grub.conf'
 </pre>
 
-##Setup
 
- Install the module from the forge and classify appropriate nodes with the profiles::puppet_audit class.
-<pre>
- class profiles::puppet_audit {
-   include puppet_audit
-
-  # Setup local hash variables pulling data from Hiera hashes.
-   $security_files_hash = hiera_hash('profiles::puppet_audit_files',{})
-   $security_directories_hash = hiera_hash('profiles::puppet_audit_directories',{})
-   $security_links_hash = hiera_hash('profiles::puppet_audit_links',{})
-  
-  # Check files, directories, and links using create resources function.
-  
-   create_resources('puppet_audit::file', $security_files_hash)
-   create_resources('puppet_audit::directory', $security_directories_hash)
-   create_resources('puppet_audit::link', $security_links_hash)
-  } 
-</pre>
 ###What puppet_audit affects
 
 * Each file, symlink, or directory you want to be informed about needs to have its "correct"
@@ -97,13 +98,7 @@ A standalone module which consumes hiera hash data pertinent to files, directori
   the `md5` command on Mac OS X, or `openssl md5 < *(filename)*` on systems which do not
   have either of these utilities installed.
 
-###Beginning with puppet_audit
 
-* hiera instructions here?
-
-##Usage
-
-* using profiles here?
 * using tags / tagmail?
 
 ##Limitations
