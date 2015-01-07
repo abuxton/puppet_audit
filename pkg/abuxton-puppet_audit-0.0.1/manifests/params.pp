@@ -15,11 +15,11 @@
 
 class puppet_audit::params {
   case $operatingsystem {
-    "Darwin": {
+    "Centos": {
       $filepath = "/tmp/afile.txt"
       $dirpath = "/tmp"
       $linkfilepath = "/tmp"
-      $fileMD5  = '{md5}d41d8cd98f00b204e9800998ecf8427e' 
+      $fileMD5  = '{md5}28356c0751810f8f709db4ef444bd5d4' 
       $group    = '0'
       $mode     = '644'
       $owner    = '501'

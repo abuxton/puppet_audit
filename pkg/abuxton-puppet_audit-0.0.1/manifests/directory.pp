@@ -1,16 +1,16 @@
 # == Class puppet_audit::directory
 #
 define puppet_audit::directory(
-  $filepath = "${title}",
   $group,
   $mode,
   $owner,
   $tags = '',
+  $filepath = "${title}",
   )
   {
     case $tags{
     '': {
-      
+
       file { "${filepath}" :
         ensure  => directory,
         group   => "${group}",
@@ -18,7 +18,7 @@ define puppet_audit::directory(
         owner   => "${owner}",
         noop    => true,
         replace => true,
-      } 
+      }
     }
     default:  {
       file { "${filepath}" :

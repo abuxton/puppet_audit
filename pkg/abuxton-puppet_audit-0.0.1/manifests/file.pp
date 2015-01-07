@@ -1,34 +1,34 @@
-# == Class puppet_audit::link
+# == Class puppet_audit::files
 #
-define puppet_audit::link(
+define puppet_audit::file(
+  $fileMD5,
   $group,
   $mode,
   $owner,
-  $target,
   $tags = '',
-  $linkfilepath = "${title}",  
+  $filepath = "${title}",
   )
   {
     case $tags{
     '': {
 
-      file { "${linkfilepath}" :
-        ensure  => link,
+      file { "${filepath}" :
+        ensure  => file,
+        content => "${fileMD5}",
         group   => "${group}",
         mode    => "${mode}",
         owner   => "${owner}",
-        target  => "${target}",
         noop    => true,
         replace => true,
       }
     }
     default:  {
-      file { "${linkfilepath}" :
-        ensure  => link,
+      file { "${filepath}" :
+        ensure  => file,
+        content => "${fileMD5}",
         group   => "${group}",
         mode    => "${mode}",
         owner   => "${owner}",
-        target  => "${target}",
         noop    => true,
         replace => true,
         tag     => "${tags}",

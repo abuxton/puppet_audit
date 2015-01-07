@@ -12,9 +12,6 @@ describe 'puppet_audit' do
         it { should compile.with_all_deps }
 
         it { should contain_class('puppet_audit::params') }
-        it { should contain_class('puppet_audit::files') }
-        it { should contain_class('puppet_audit::directory') }
-        it { should contain_class('puppet_audit::link') }
       end
     end
   end

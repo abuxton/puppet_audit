@@ -1,17 +1,17 @@
 # == Class puppet_audit::files
 #
 define puppet_audit::files(
-  $filepath = "${title}",
   $fileMD5,
   $group,
   $mode,
   $owner,
   $tags = '',
+  $filepath = "${title}",
   )
   {
     case $tags{
     '': {
-      
+
       file { "${filepath}" :
         ensure  => file,
         content => "${fileMD5}",
@@ -20,7 +20,7 @@ define puppet_audit::files(
         owner   => "${owner}",
         noop    => true,
         replace => true,
-      } 
+      }
     }
     default:  {
       file { "${filepath}" :
