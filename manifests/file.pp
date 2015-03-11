@@ -5,34 +5,30 @@ define puppet_audit::file(
   $group,
   $mode,
   $owner,
-  $tags = '',
+  $tags = undef,
   $filepath = "${title}",
-  )
-  {
-    case $tags{
-    '': {
-
-      file { "${filepath}" :
-        ensure  => file,
-        content => "${fileMD5}",
-        group   => "${group}",
-        mode    => "${mode}",
-        owner   => "${owner}",
-        noop    => true,
-        replace => true,
-      }
+)
+{
+  if $tags {
+    file { "${filepath}" :
+      ensure  => file,
+      content => "${fileMD5}",
+      group   => "${group}",
+      mode    => "${mode}",
+      owner   => "${owner}",
+      noop    => true,
+      replace => true,
+      tag     => "${tags}",
     }
-    default:  {
-      file { "${filepath}" :
-        ensure  => file,
-        content => "${fileMD5}",
-        group   => "${group}",
-        mode    => "${mode}",
-        owner   => "${owner}",
-        noop    => true,
-        replace => true,
-        tag     => "${tags}",
-      }
+  } else {
+    file { "${filepath}" :
+      ensure  => file,
+      content => "${fileMD5}",
+      group   => "${group}",
+      mode    => "${mode}",
+      owner   => "${owner}",
+      noop    => true,
+      replace => true,
     }
   }
 }
