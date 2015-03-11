@@ -4,32 +4,28 @@ define puppet_audit::directory(
   $group,
   $mode,
   $owner,
-  $tags = '',
+  $tags = undef,
   $filepath = "${title}",
-  )
-  {
-    case $tags{
-    '': {
-
-      file { "${filepath}" :
-        ensure  => directory,
-        group   => "${group}",
-        mode    => "${mode}",
-        owner   => "${owner}",
-        noop    => true,
-        replace => true,
-      }
+)
+{
+  if $tags {
+    file { "${filepath}" :
+      ensure  => directory,
+      group   => "${group}",
+      mode    => "${mode}",
+      owner   => "${owner}",
+      noop    => true,
+      replace => true,
+      tag     => "${tags}",
     }
-    default:  {
-      file { "${filepath}" :
-        ensure  => directory,
-        group   => "${group}",
-        mode    => "${mode}",
-        owner   => "${owner}",
-        noop    => true,
-        replace => true,
-        tag     => "${tags}",
-      }
+  } else {
+    file { "${filepath}" :
+      ensure  => directory,
+      group   => "${group}",
+      mode    => "${mode}",
+      owner   => "${owner}",
+      noop    => true,
+      replace => true,
     }
   }
 }
