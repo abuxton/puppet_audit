@@ -4,26 +4,30 @@ describe 'puppet_audit' do
   context 'supported operating systems' do
     ['Darwin', 'Redhat'].each do |operatingsystem|
       describe "puppet_audit class without any parameters on #{operatingsystem}" do
-        let(:params) {{ }}
-        let(:facts) {{
-          :operatingsystem => operatingsystem,
-        }}
+        let(:params) { {} }
+        let(:facts) do
+          {
+            operatingsystem: operatingsystem,
+          }
+        end
 
-        it { should compile.with_all_deps }
+        it { is_expected.to compile.with_all_deps }
 
-        it { should contain_class('puppet_audit::params') }
+        it { is_expected.to contain_class('puppet_audit::params') }
       end
     end
   end
 
   context 'unsupported operating system' do
     describe 'puppet_audit class without any parameters on Solaris/Nexenta' do
-      let(:facts) {{
-        :osfamily        => 'Solaris',
-        :operatingsystem => 'Nexenta',
-      }}
+      let(:facts) do
+        {
+          osfamily: 'Solaris',
+          operatingsystem: 'Nexenta',
+        }
+      end
 
-      it { expect { should contain_package('puppet_audit') }.to raise_error(Puppet::Error, /Nexenta not supported/) }
+      it { expect { is_expected.to contain_package('puppet_audit') }.to raise_error(Puppet::Error, %r{Nexenta not supported}) }
     end
   end
 end

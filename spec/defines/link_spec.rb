@@ -4,12 +4,12 @@ describe 'puppet_audit::link' do
   let(:title) { 'namevar' }
   let(:params) do
     {
-      "group"         =>  'foo', 
-      "mode"          =>  '0777',
-      "owner"         =>  'foo',
-      "target"        =>  'foo',
-      "tags"          => :nil,
-      "linkfilepath"  => '/namevar,
+      'group'         =>  'foo',
+      'mode'          =>  '0777',
+      'owner'         =>  'foo',
+      'target'        =>  '/namevar/target',
+      'tags'          =>  :nil,
+      'linkfilepath'  =>  '/namevar',
     }
   end
 

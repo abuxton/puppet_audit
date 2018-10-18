@@ -7,14 +7,14 @@
 #     $group  =>  String,
 #     $mode   =>  String,
 #     $owner  =>  String,
-#     $target =>  String,
+#     $target =>  Stdlib::Absolutepath,
 #     $tags   =>  ['String'],
 #   }
 define puppet_audit::link(
   String                          $group,
   String                          $mode,
   String                          $owner,
-  String                          $target,
+  Stdlib::Absolutepath            $target,
   Optional[Variant[Array,String]] $tags         = undef,
   Stdlib::Absolutepath            $linkfilepath = $title,
 )

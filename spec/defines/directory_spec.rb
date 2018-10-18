@@ -3,7 +3,13 @@ require 'spec_helper'
 describe 'puppet_audit::directory' do
   let(:title) { 'namevar' }
   let(:params) do
-    {}
+    {
+      'group'         =>  'foo',
+      'mode'          =>  '0777',
+      'owner'         =>  'foo',
+      'tags'          =>  :undef,
+      'linkfilepath'  =>  '/namevar',
+    }
   end
 
   on_supported_os.each do |os, os_facts|
