@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'apuppet_audit::directory' do
+describe 'puppet_audit::directory' do
   let(:title) { 'namevar' }
   let(:params) do
     {}

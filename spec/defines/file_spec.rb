@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'apuppet_audit::file' do
+describe 'puppet_audit::file' do
   let(:title) { 'namevar' }
   let(:params) do
     {}
