@@ -10,10 +10,13 @@
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
 include puppet_audit
-puppet_audit::directory { "${puppet_audit::params::dirpath}":
-group   => "${puppet_audit::params::group}",
-owner   => "${puppet_audit::params::owner}",
-mode    => "${puppet_audit::params::mode}",
-tags    => "${puppet_audit::params::tags}",
+#notify {"${puppet_audit::params::filepath}":}
+#notify {"${puppet_audit::params::fileMD5}":}
+puppet_audit::file { $puppet_audit::params::filepath:
+fileMD5 => $puppet_audit::params::fileMD5,
+group   => $puppet_audit::params::group,
+owner   => $puppet_audit::params::owner,
+mode    => $puppet_audit::params::mode,
+tags    => $puppet_audit::params::tags,
 }
 
