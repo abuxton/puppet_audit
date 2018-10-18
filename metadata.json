@@ -49,14 +49,6 @@
       ]
     },
     {
-      "operatingsystem": "windows",
-      "operatingsystemrelease": [
-        "2008 R2",
-        "2012 R2",
-        "10"
-      ]
-    },
-    {
       "operatingsystem": "Darwin",
       "operatingsystemrelease": [
         "16"

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'puppet_audit::link' do
-  let(:title) { 'namevar' }
+  let(:title) { '/namevar' }
   let(:params) do
     {
       'group'         =>  'foo',
