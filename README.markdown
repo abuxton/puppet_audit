@@ -41,7 +41,7 @@ A standalone module which consumes hiera hash data pertinent to files, directori
 
  Install the module from the forge and classify appropriate nodes with a profile class i.e.
 <pre>
- class profiles::puppet_audit {
+ class profile::puppet_audit {
    include puppet_audit
 
   # Setup local hash variables pulling data from Hiera hashes.
@@ -62,12 +62,12 @@ Hiera data for example usage:
   ---
   'profile::puppet_audit_files':
     '/etc/passwd':
-      fileMD5: '{md5}0c4305ed79b2292299b00ebcb691a0e4'
+      checksum_value: '0c4305ed79b2292299b00ebcb691a0e4'
       group: '0'
       mode: '644'
       owner: '0'
     '/etc/group':
-      fileMD5: '{md5}51c9981096429f8e37696806c7b0050f'
+      checksum_value: '{md5}51c9981096429f8e37696806c7b0050f'
       group: '0'
       mode: '644'
       owner: '0'
