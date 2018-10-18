@@ -45,9 +45,9 @@ A standalone module which consumes hiera hash data pertinent to files, directori
    include puppet_audit
 
   # Setup local hash variables pulling data from Hiera hashes.
-   $security_files_hash = hiera_hash('profiles::puppet_audit_files',{})
-   $security_directories_hash = hiera_hash('profiles::puppet_audit_directories',{})
-   $security_links_hash = hiera_hash('profiles::puppet_audit_links',{})
+   $security_files_hash = hiera_hash('profile::puppet_audit_files',{})
+   $security_directories_hash = hiera_hash('profile::puppet_audit_directories',{})
+   $security_links_hash = hiera_hash('profile::puppet_audit_links',{})
   
   # Check files, directories, and links using create resources function.
   
@@ -60,7 +60,7 @@ A standalone module which consumes hiera hash data pertinent to files, directori
 Hiera data for example usage:
 <pre>
   ---
-  'profiles::puppet_audit_files':
+  'profile::puppet_audit_files':
     '/etc/passwd':
       fileMD5: '{md5}0c4305ed79b2292299b00ebcb691a0e4'
       group: '0'
@@ -71,7 +71,7 @@ Hiera data for example usage:
       group: '0'
       mode: '644'
       owner: '0'
-  'profiles::puppet_audit_directories':
+  'profile::puppet_audit_directories':
     '/etc/rc.d':
       group: '0'
       owner: '0'
@@ -80,7 +80,7 @@ Hiera data for example usage:
       group: '0'
       owner: '0'
       mode: '755'
-  'profiles::puppet_audit_links':
+  'profile::puppet_audit_links':
     '/etc/grub.conf':
       group: '0'
       owner: '0'
@@ -101,17 +101,7 @@ Hiera data for example usage:
 
 * using tags / tagmail?
 
-##Limitations
 
-* The files, links and directories you create using puppet_audit cannot *also* be managed
-  in other parts of your Puppet configuration as regular resources; doing so will cause 
-  a "duplicate resource" error.
-
-##Development
-
-Contributions welcome!
-=======
- Only the list of files, directories and symlinks specified in the appropriate hiera hashes.
 
 ###Setup Requirements **OPTIONAL**
 
@@ -119,23 +109,33 @@ Contributions welcome!
 
 ###Beginning with puppet_audit
 
+This module expands and abstracts the ["Alternate Compliance Workflow" outlined in the 
+Puppet Enterprise documentation](https://docs.puppetlabs.com/pe/latest/compliance_alt.html).
 
 ##Usage
 
-puppet_audit is called via the profile: profiles::puppet_audit which declares the puppet_audit class and calls the defined resource types: puppet_audit::file, puppet_audit::directory, puppet_audit::link.
+puppet_audit examples/profiles shows desired usage.
 ##Reference
 
 Please see: https://docs.puppetlabs.com/hiera/1/lookup_types.html for information on encapsulating data in hiera hashes.
 
 ##Limitations
 
-This module has been tested on Darwin [OSX] and Centos 6.5.
+* The files, links and directories you create using puppet_audit cannot *also* be managed
+  in other parts of your Puppet configuration as regular resources; doing so will cause 
+  a "duplicate resource" error.
+* This module has been tested on Darwin [OSX] and Centos 6.5. Although it simply leverages Puppet resources in a known pattern.
 
 ##Development
 
-abuxton / dbmoore
+Contributions welcome!
+=======
+ Only the list of files, directories and symlinks specified in the appropriate hiera hashes.
 
-##Release Notes/Contributors/Etc **Optional**
 
-This module expands and abstracts the ["Alternate Compliance Workflow" outlined in the 
-Puppet Enterprise documentation](https://docs.puppetlabs.com/pe/latest/compliance_alt.html).
+##Release Notes/Contributors/Etc 
+
+abuxton 
+dbmoore
+trlinkin
+

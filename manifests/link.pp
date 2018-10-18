@@ -1,33 +1,42 @@
-# == Class puppet_audit::link
-i
+# A description of what this defined type does
 #
+# @summary defined type resource for auditing symlinks.
+#
+# @example
+#   puppet_audit::alink { 'Stdlib::Absolutepath': 
+#     $group  =>  String,
+#     $mode   =>  String,
+#     $owner  =>  String,
+#     $target =>  Stdlib::Absolutepath,
+#     $tags   =>  ['String'],
+#   }
 define puppet_audit::link(
-  $group,
-  $mode,
-  $owner,
-  $target,
-  $tags = undef,
-  $linkfilepath = "${title}",
+  String                          $group,
+  String                          $mode,
+  String                          $owner,
+  Stdlib::Absolutepath            $target,
+  Optional[Variant[Array,String]] $tags         = undef,
+  Stdlib::Absolutepath            $linkfilepath = $title,
 )
 {
   if $tags {
-    file { "${linkfilepath}" :
+    file { $linkfilepath :
       ensure  => link,
-      group   => "${group}",
-      mode    => "${mode}",
-      owner   => "${owner}",
-      target  => "${target}",
+      group   => $group,
+      mode    => $mode,
+      owner   => $owner,
+      target  => $target,
       noop    => true,
       replace => true,
-      tag     => "${tags}",
+      tag     => $tags,
     }
   } else  {
-    file { "${linkfilepath}" :
+    file { $linkfilepath :
       ensure  => link,
-      group   => "${group}",
-      mode    => "${mode}",
-      owner   => "${owner}",
-      target  => "${target}",
+      group   => $group,
+      mode    => $mode,
+      owner   => $owner,
+      target  => $target,
       noop    => true,
       replace => true,
     }
