@@ -2,9 +2,11 @@
   "name": "abuxton-puppet_audit",
   "version": "1.0.1",
   "author": "abuxton",
-  "summary": "",
+  "summary": "https://puppet.com/docs/pe/2017.2/compliance_alt.html",
   "license": "MIT",
   "source": "https://github.com/abuxton/puppet_audit",
+  "project_page": "https://github/abuxton/puppet_audit",
+  "issues_url": "https://github/abuxton/puppet_audit/issues",
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",

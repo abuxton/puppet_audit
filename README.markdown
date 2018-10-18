@@ -110,7 +110,7 @@ Hiera data for example usage:
 ###Beginning with puppet_audit
 
 This module expands and abstracts the ["Alternate Compliance Workflow" outlined in the 
-Puppet Enterprise documentation](https://docs.puppetlabs.com/pe/latest/compliance_alt.html).
+Puppet Enterprise documentation](https://puppet.com/docs/pe/2017.2/compliance_alt.html).
 
 ##Usage
 
